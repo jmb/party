@@ -26,30 +26,7 @@
               <p><tt><%= @guest.email %></tt></p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4">
-              Dietary Preferences
-            </div>
-            <div class="col-md-8">
-              <% if @guest.diet.present? %>
-                <pre><%= @guest.diet %></pre>
-              <% else %>
-                <p>(None)</p>
-              <% end %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              Song Suggestions
-            </div>
-            <div class="col-md-8">
-              <% if @guest.songs.present? %>
-                <pre><%= @guest.songs %></pre>
-              <% else %>
-                <p>(None)</p>
-              <% end %>
-            </div>
-          </div>
+          
           <div class="row">
             <div class="col-md-12 text-right">
               <%= link_to 'Edit', guest_path(@guest), class: 'card-link', data: { disable_with: 'Loading...' } %>

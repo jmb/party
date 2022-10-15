@@ -3,7 +3,7 @@
 <% if @guest.attending %>
 <p>We look forward to seeing you!</p>
 <p>The address is:</p>
-<address><%= render partial: 'application/wedding_address' %></address>
+<address><%= render partial: 'application/party_address' %></address>
 
 <h3>Your RSVP</h3>
 <p>If you would like to view or update your RSVP, you can use the following link to get back to it:</p>
@@ -14,7 +14,7 @@
 <address><%= render partial: 'application/mailing_address' %></address>
 
 <h3>Questions and answers</h3>
-<p>Please check <%= link_to 'our wedding website', root_url %> for more information, or you can reply to this email.</p>
+<p>Please check <%= link_to 'the party website', root_url %> for more information, or you can reply to this email.</p>
 <% else %>
 <p>We're sorry to hear you can't make it. If you change your mind, you can update your RSVP with the link below:</p>
 <p><%= link_to guest_url(@guest), guest_url(@guest) %></p>
@@ -22,4 +22,4 @@
 <% end %>
 
 <p>&nbsp;</p>
-<p><%= t :wedding_couple_names %></p>
+<p><%= t :party_name %></p>

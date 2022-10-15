@@ -8,10 +8,10 @@ RUN apt-get update -qq &&\
 ENV HOME=/home/app
 USER app
 
-COPY --chown=app:app Gemfile Gemfile.lock $HOME/wedding/
-WORKDIR $HOME/wedding
+COPY --chown=app:app Gemfile Gemfile.lock $HOME/party/
+WORKDIR $HOME/party
 RUN bundle
 
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
 
-COPY --chown=app:app . $HOME/wedding/
+COPY --chown=app:app . $HOME/party/
