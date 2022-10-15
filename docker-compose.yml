@@ -3,14 +3,32 @@ version: '3.7'
 services:
   db:
     image: postgres:10
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
-    ports:
-      - '5432:5432'
 
   web:
     build: .
-    ports:
-      - '3000:3000'
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes: - .:/home/app/party
+    env_file:
+      - production.env
     links:
       - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.party.entrypoints=websecure"
+      - "traefik.http.routers.party.tls=true"
+      - "traefik.http.routers.party.rule=Host(`$HOSTNAME`)"
+      - "traefik.docker.network=traefik-proxy"
+      - "com.centurylinklabs.watchtower.enable=false"
+  
+
+volumes:
+  postgres_data:
+
+networks:
+  traefik-proxy:
+    name: traefik-proxy
+    external: true
